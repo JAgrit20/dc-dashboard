@@ -69,7 +69,7 @@
 				{ticketObj.student.firstname} {ticketObj.student.lastname}
 			</AccordionHeader>
 			<AccordionBody id={ticketObj.student.hKey} target={ticketObj.student.cKey} parent="#ticket-s-accordion">
-				<strong>UID: </strong>{ticketObj.student.uid}<br>
+				<strong>Test: </strong>{ticketObj.student.uid}<br>
 				<strong>Phone: </strong>{ticketObj.student.phonenumber}<br>
 				<strong>Email: </strong>{ticketObj.student.Email}<br>
 				{#each Object.keys(ticketObj.ticketList) as qId, i (qId)}

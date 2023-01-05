@@ -9,8 +9,8 @@
 
 	async function getStudents() {
 		const res = await fetch('/api/signed-students')
+		console.info("DATAA",res);
 		const data = await res.json()
-
 		if (!res.ok)
 			throw new Error('Request to server was unsucessful')
 
@@ -20,13 +20,17 @@
 		students = []
 		Object.keys(data).forEach(uid => {
 			students = [...students, {
-				...data[uid],
-				uid,
-				hKey: `h-st--${uid}`,
-				cKey: `c-st--${uid}`
-			}]
+			...data[uid],
+			uid,
+			hKey: `h-st--${uid}`,
+			cKey: `c-st--${uid}`
+		}].sort();
 		})
-
+		students.sort(function(a, b){
+    if(a.firstname < b.firstname) { return -1; }
+    if(a.firstname > b.firstname) { return 1; }
+    return 0;
+})
 		return true
 	}
 	
@@ -44,12 +48,13 @@
 				{student.firstname} {student.lastname}
 			</AccordionHeader>
 			<AccordionBody id={student.hKey} target={student.cKey} parent="#students-s-accordion">
-				<strong>UID: </strong>{student.uid}<br>
+				<strong>test: </strong>{student.uid}<br>
 				<strong>Name: </strong>{student.firstname} {student.lastname}<br>
 				<strong>Email: </strong>{student.Email}<br>
 				<strong>Phone Number: </strong>{student.phonenumber}<br>
 				<strong>Primary Language: </strong>{student.lang}<br>
 				<strong>Board/Grade: </strong>{student.Board} - {student.Grade}
+				<h1>hi</h1>
 			</AccordionBody>
 		</div>
 	{:else}

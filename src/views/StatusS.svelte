@@ -8,7 +8,7 @@
 	let promise = getTeachersEng()
 
 	async function getTeachersEng() {
-		const res = await fetch('/api/engadeged-teachers')
+		const res = await fetch('/api/engadeged-student')
 		const data = await res.json()
 
 		if (!res.ok)
@@ -44,7 +44,7 @@
 				{teacher.firstname} {teacher.lastname}
 			</AccordionHeader>
 			<AccordionBody id={teacher.hKey} target={teacher.cKey} parent="#income-t-accordion">
-				<strong>UID: </strong>{teacher.uid}<br>
+				<strong>Test: </strong>{teacher.uid}<br>
 				<strong>Name: </strong>{teacher.firstname} {teacher.lastname}<br>
 				<strong>Email: </strong>{teacher.Email}<br>
 				<strong>Phone Number: </strong>{teacher.phone}<br>
